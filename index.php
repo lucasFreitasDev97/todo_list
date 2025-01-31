@@ -15,27 +15,45 @@ $result = $conn->query($sql);
     <title>To Do List</title>
 </head>
 <body>
-    <main>
+<main>
+    <div>
+        <h1>To Do List</h1>
+    </div>
+    <div>
+        <form action="scripts/add_task.php" method="POST">
+            <div>
+                <input type="text" name="title" id="title" placeholder="New Task">
+                <button type="submit"><strong>+</strong></button>
+            </div>
+        </form>
+        <br>
         <div>
-            <h1>To Do List</h1>
-        </div>
-        <div>
-            <form action="scripts/add_task.php" method="POST">
-                <div>
-                    <input type="text" name="title" id="title" placeholder="New Task">
-                    <button type="submit"><strong>+</strong></button>
-                </div>
-            </form>
-            <ul>
+            <table border="1">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
                 <?php while ($row = $result->fetch_assoc()): ?>
-                    <li>
-                        <?= $row['title'] ?>
-                        - <a href="scripts/mark_done.php?id=<?= $row['id'] ?>">Done</a>
-                        | <a href="scripts/delete_task.php?id=<?= $row['id'] ?>">Delete</a>
-                    </li>
+                    <tr>
+                        <td><?= $row['id'] ?></td>
+                        <td><?= $row['title'] ?></td>
+                        <td><?= $row['is_done'] ? 'Done' : 'Pending' ?></td>
+                        <td>
+                            <a href="scripts/mark_done.php?id=<?= $row['id'] ?>">Done</a>
+                            |
+                            <a href="scripts/delete_task.php?id=<?= $row['id'] ?>">Delete</a>
+                        </td>
+                    </tr>
                 <?php endwhile; ?>
-            </ul>
+                </tbody>
+            </table>
         </div>
-    </main>
+    </div>
+</main>
 </body>
 </html>
