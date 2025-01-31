@@ -12,6 +12,7 @@ $result = $conn->query($sql);
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
     <title>To Do List</title>
 </head>
 <body>
@@ -23,6 +24,9 @@ $result = $conn->query($sql);
         <form action="scripts/add_task.php" method="POST">
             <div>
                 <input type="text" name="title" id="title" placeholder="New Task">
+                <br><br>
+                <input type="date" name="date" id="date">
+                <br><br>
                 <button type="submit"><strong>+</strong></button>
             </div>
         </form>
@@ -44,11 +48,11 @@ $result = $conn->query($sql);
                         <td><?= $row['title'] ?></td>
                         <td><?= $row['is_done'] ? 'Done' : 'Pending' ?></td>
                         <td>
-                            <a href="scripts/mark_done.php?id=<?= $row['id'] ?>">Done</a>
-                            |
-                            <a href="scripts/mark_pending.php?id=<?= $row['id'] ?>">Pending</a>
-                            |
-                            <a href="scripts/delete_task.php?id=<?= $row['id'] ?>">Delete</a>
+                            <a href="scripts/mark_done.php?id=<?= $row['id'] ?>"><span style="color: green"><strong>✓</strong></span></a>
+                            &nbsp;
+                            <a href="scripts/mark_pending.php?id=<?= $row['id'] ?>"><span style="color: orange"><strong>!</strong></span></a>
+                            &nbsp;
+                            <a href="scripts/delete_task.php?id=<?= $row['id'] ?>"><span style="color: red"><strong>X</strong></span></a>
 
                         </td>
                     </tr>
