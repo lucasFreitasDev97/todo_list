@@ -28,7 +28,7 @@ $result = $conn->query($sql);
         </form>
         <br>
         <div>
-            <table border="1">
+            <table>
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -46,7 +46,10 @@ $result = $conn->query($sql);
                         <td>
                             <a href="scripts/mark_done.php?id=<?= $row['id'] ?>">Done</a>
                             |
+                            <a href="scripts/mark_pending.php?id=<?= $row['id'] ?>">Pending</a>
+                            |
                             <a href="scripts/delete_task.php?id=<?= $row['id'] ?>">Delete</a>
+
                         </td>
                     </tr>
                 <?php endwhile; ?>
