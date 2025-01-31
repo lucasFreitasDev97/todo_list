@@ -30,7 +30,7 @@ $result = $conn->query($sql);
                 <?php while ($row = $result->fetch_assoc()): ?>
                     <li>
                         <?= $row['title'] ?>
-                        - <a href="mark_done.php?id=<?= $row['id'] ?>">Done</a>
+                        - <a href="scripts/mark_done.php?id=<?= $row['id'] ?>">Done</a>
                         | <a href="scripts/delete_task.php?id=<?= $row['id'] ?>">Delete</a>
                     </li>
                 <?php endwhile; ?>
