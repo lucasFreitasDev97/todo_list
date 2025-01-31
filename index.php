@@ -31,7 +31,7 @@ $result = $conn->query($sql);
                     <li>
                         <?= $row['title'] ?>
                         - <a href="mark_done.php?id=<?= $row['id'] ?>">Done</a>
-                        | <a href="delete_task.php?id=<?= $row['id'] ?>">Delete</a>
+                        | <a href="scripts/delete_task.php?id=<?= $row['id'] ?>">Delete</a>
                     </li>
                 <?php endwhile; ?>
             </ul>
